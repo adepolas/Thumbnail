@@ -51,7 +51,7 @@ class Thumbnail
     {
         try
         {
-            if(empty(getenv('FFMPEG_PATH'))
+            if(empty(getenv('FFMPEG_PATH')))
             {
                 $ffmpeg  = FFMpeg::create();   
             }
