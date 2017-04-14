@@ -11,7 +11,6 @@ namespace Lakshmajim\Thumbnail;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-// use Exception;
 use FFMpeg\FFMpeg;
 use FFMpeg\Coordinate;
 
