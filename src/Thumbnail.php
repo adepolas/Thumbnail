@@ -52,14 +52,21 @@ class Thumbnail
     {
         try
         {
-            $ffmpeg       = FFMpeg::create(
-                [
-                    'ffmpeg.binaries'  => getenv('FFMPEG_PATH').'/ffmpeg',
-                    'ffprobe.binaries' => getenv('FFMPEG_PATH').'/ffprobe',
-                    'timeout'          => 3600, // The timeout for the underlying process
-                    'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
-                ]
-            );
+            if(empty(getenv('FFMPEG_PATH'))
+            {
+                $ffmpeg  = FFMpeg::create();   
+            }
+            else {
+                $ffmpeg  = FFMpeg::create(
+                    [
+                        'ffmpeg.binaries'  => getenv('FFMPEG_PATH').'/ffmpeg',
+                        'ffprobe.binaries' => getenv('FFMPEG_PATH').'/ffprobe',
+                        'timeout'          => 3600, // The timeout for the underlying process
+                        'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
+                    ]
+                );
+            }
+               
             $video        = $ffmpeg->open($video_path);
             $result_image = $storage_path.'/'.$thumnail_name;
 
